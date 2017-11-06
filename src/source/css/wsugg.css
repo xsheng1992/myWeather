@@ -1,0 +1,56 @@
+/*wnow.css*/
+.suggBox {
+	margin: 0 -30px 50px;
+	padding: 0;
+	background-color: #fff;
+	border-top: 1px solid #d5d5d5;
+	border-bottom: 1px solid #d5d5d5;
+	font-size: 0;
+}
+
+.suggItem {
+	float: left;
+	width: 25%;
+	height: 220px;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 20px;
+	color: #666;
+	position: relative;
+	overflow: hidden;
+}
+.suggItem:nth-child(n+5) {
+	border-top: 1px solid #d5d5d5;
+}
+.suggItem:nth-child(4n+2),
+.suggItem:nth-child(4n+3),
+.suggItem:nth-child(4n+4),
+.suggItem:nth-child(4n+5) {
+	border-left: 1px solid #d5d5d5;
+}
+.suggImg {
+	width: 80px;
+	height: 80px;
+	margin: 15px auto;
+}
+.suggBrf {
+	font-size: 30px;
+	color: #e8914c;
+}
+.suggMsgOuter {
+	position: relative;
+	float: left;
+	width: 100%;
+}
+.suggMsg {
+	width: 100%;
+	height: 180px;
+	background-color: #fff;
+	border-top: 1px solid #d5d5d5;
+	overflow: hidden;
+}
+.suggMsg>p {
+	font-size: 28px;
+	line-height: 48px;
+	margin: 30px 40px;
+}

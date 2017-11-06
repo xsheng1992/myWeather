@@ -1,0 +1,65 @@
+/*wnow.css*/
+.header {
+	width: 100%;
+	text-align: center;
+	padding-bottom: 80px;
+}
+.header>h2 {
+	margin: 20px 0 15px;
+	font-size: 50px;
+	line-height: 50px;
+	font-weight: 500;
+	text-align: center;
+	color: #333;
+}
+.header>img {
+	display: block;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+}
+.fullDate {
+	font-size: 22px;
+	color: #999;
+}
+.cond {
+	font-size: 28px;
+	color: #666;
+}
+.tmp {
+	font-size: 100px;
+	line-height: 130px;
+}
+.aqispan {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 10px;
+	font-size: 24px;
+	color: #fff;
+	border-radius: 5px;
+}
+.aqitype1 {
+	composes: aqispan;
+	background-color: #9cca7f;
+}
+.aqitype2 {
+	composes: aqispan;
+	background-color: #f9da65;
+}
+.aqitype3 {
+	composes: aqispan;
+	background-color: #f29f39;
+}
+.aqitype4 {
+	composes: aqispan;
+	background-color: #db555e;
+}
+.aqitype5 {
+	composes: aqispan;
+	background-color: #ba3779;
+}
+.aqitype6 {
+	composes: aqispan;
+	background-color: #881326;
+}

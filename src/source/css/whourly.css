@@ -1,0 +1,82 @@
+/*whourly.css*/
+.hourlyBox {
+	padding: 60px 0 40px;
+}
+.head {
+	font-size: 36px;
+	line-height: 40px;
+	font-weight: normal;
+	margin-bottom: 40px;
+	color: #507ac7;
+}
+.hourList {
+	position: relative;
+}
+.hourList:before {
+	content: '';
+	display: block;
+	width: 2px;
+	height: 100%;
+	background-color: #507ac7;
+	position: absolute;
+	top: 0;
+	left: 104px;
+}
+.hourList>li {
+	font-size: 26px;
+	line-height: 26px;
+	position: relative;
+}
+.hourList>li:before {
+	content: '';
+	display: block;
+	width: 16px;
+	height: 16px;
+	border: 7px solid #f5f5f5;
+	border-radius: 50%;
+	background-color: #507ac7;
+	position: absolute;
+	top: 0px;
+	left: 90px;
+}
+.lastItem {
+	font-size: 24px;
+	color: #999;
+	padding-left: 130px;
+}
+.htit {
+	font-size: 28px;
+	line-height: 30px;
+	margin-bottom: 20px;
+	color: #333;
+}
+.htit span+span { margin-right: 20px;}
+.blue { 
+	display: inline-block;
+	margin-right: 50px;
+	width: 80px;
+	font-size: 28px;
+	color: #507ac7; 
+}
+
+.outerBox {
+	position: relative;
+	overflow: hidden;
+	padding-left: 130px;
+}
+.hourDetail {
+	font-size: 0;
+	line-height: 36px;
+	height: 152px;
+}
+.dItem {
+	display: inline-block;
+	width: 35%;
+	font-size: 24px;
+	color: #666;
+}
+.dItem>span { color: #073c79; }
+.dFullItem {
+	composes: dItem;
+	width: 100%;
+}
