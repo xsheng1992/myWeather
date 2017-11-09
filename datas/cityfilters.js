@@ -3,14 +3,14 @@ import cities from './cities'
 import zjcities from './citiesZJ'
 
 //获取省
-const provinces = cities.map(item=>item.province_cn).filter((elem,index,self)=>(self.indexOf(elem)===index))
-const getUpCities = (province) => {
+export const provinces = zjcities.map(item=>item.province_cn).filter((elem,index,self)=>(self.indexOf(elem)===index))
+export const getUpCities = (province) => {
 	return cities.filter(item=>(item.province_cn === province))
 					.map(item=>item.upcity_cn)
 					.filter((elem,index,self)=>(self.indexOf(elem)===index))
 }
-const getCity = (upcity) => {
-	return cities.filter(item=>(item.upcity_cn))
+export const getCity = (upcity) => {
+	return cities.filter(item=>(item.upcity_cn === upcity))
 }
 
 export const searchCity = (str) => {

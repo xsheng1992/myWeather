@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 class Main extends Component {
 	render() {
 		return (
+			/*
 			<ReactCSSTransitionGroup
         transitionName="slide"
         component="div"
@@ -14,6 +15,10 @@ class Main extends Component {
           key: location.pathname
         })}
 			</ReactCSSTransitionGroup>
+			*/
+			<div className="main">
+				{this.props.children}
+			</div>
 		)
 	}
 }
