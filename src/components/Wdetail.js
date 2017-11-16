@@ -3,17 +3,25 @@ import { Link, browserHistory } from 'react-router'
 import { connect } from 'react-redux'
 import { selectSite, invalidateSite, fetchWeatherIfNeeded } from '../actions'
 import Wcontain from '../containers/Wcontain'
+import stl from '../source/css/result.css'
 
 class Wdetail extends Component {
 	constructor(props) {
 		super(props);
 		this.siteName = props.site
+		this.clickBack = this.clickBack.bind(this)
 	}
 
 	componentDidMount() {
 		const { dispatch } = this.props
 		dispatch(selectSite(this.siteName))
 		dispatch(fetchWeatherIfNeeded(this.siteName))
+		localStorage.setItem("cityName", this.siteName)
+	}
+
+	clickBack(e) {
+		const url = localStorage.getItem("lastUrl")
+		browserHistory.push(url)
 	}
 
 	render() {
@@ -21,25 +29,11 @@ class Wdetail extends Component {
 		if(fetchError) {
 			return (
 				<div className="container">
-					<p style={{
-						fontSize: '50px',
-						fontWeight: '200',
-						textAlign: 'center',
-						marginBottom: '30px'
-					}}>
-						出错啦!
-					</p>
+					<p className={stl.wrong}>出错啦!</p>
 
-					<Link to="/"
-						 style={{
-						 	color: '#00f',
-						 	display: 'block',
-						 	fontSize: '30px',
-						 	lineHeight: '60px',
-						 	textAlign: 'center'
-					}}>
+					<span className={stl.backLink} onClick={this.clickBack}>
 						返回
-					</Link>
+					</span>
 				</div>
 			)
 		} else {

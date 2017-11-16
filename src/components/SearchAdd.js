@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, browserHistory } from 'react-router'
+import { Link, browserHistory, withRouter } from 'react-router'
 import { searchCity, findCity } from '../../datas/cityfilters'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
@@ -18,7 +18,12 @@ class Home extends Component {
 		this.handleClick = this.handleClick.bind(this)
 	}
 	componentDidMount() {
-		//filters()
+		const { route, router } = this.props
+		router.setRouteLeaveHook(route, this.routerWillLeave)
+	}
+
+	routerWillLeave(nextLocation) {
+		localStorage.setItem("lastUrl", '/add');
 	}
 
 	handleClick(e) {
@@ -89,4 +94,4 @@ class Home extends Component {
 	}
 }
 
-export default Home
+export default withRouter(Home)

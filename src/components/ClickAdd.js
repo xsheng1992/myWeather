@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { Link, browserHistory } from 'react-router'
+import { Link, browserHistory, withRouter } from 'react-router'
 import { searchCity, findCity, provinces, getUpCities, getCity } from '../../datas/cityfilters'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import stl from '../source/css/home.css'
 
-class Home extends Component {
-	constructor(props) {
-		super(props);
-		this.state= {
+const Home = React.createClass({
+	getInitialState() {
+		return {
 			provinces: provinces,
 			upcities: '',
 			cities: '',
@@ -16,12 +15,21 @@ class Home extends Component {
 			supcity: '',
 			scity: ''
 		}
-		this.clickPvince = this.clickPvince.bind(this)
-		this.clickUpcity = this.clickUpcity.bind(this)
-	}
+	},
+
+	routerWillLeave(nextLocation) {
+		localStorage.setItem("lastUrl", '/click')
+		localStorage.setItem("clickConfig", JSON.stringify(this.state))
+  },
+
 	componentDidMount() {
-		//filters()
-	}
+		const { provinces, upcities, cities, spvince, supcity } = JSON.parse(localStorage.getItem("clickConfig")),
+					scity = localStorage.getItem("cityName")
+		this.setState({provinces, upcities, cities, spvince, supcity, scity})
+		
+		const { route, router } = this.props
+		router.setRouteLeaveHook(route, this.routerWillLeave)
+	},
 
 	clickPvince(e) {
 		const pname = e.currentTarget.innerHTML
@@ -33,7 +41,7 @@ class Home extends Component {
 				supcity: '',
 				scity: ''
 			})
-	}
+	},
 	clickUpcity(e) {
 		const uname = e.currentTarget.innerHTML
 		return uname === this.state.supcity ? false :
@@ -42,7 +50,7 @@ class Home extends Component {
 				supcity: uname,
 				scity: ''
 			})
-	}
+	},
 
 	render() {
 		return (
@@ -53,7 +61,7 @@ class Home extends Component {
 						<button className={`${stl.cityPill} ${(this.state.upcities && item === this.state.spvince) ? stl.activePill:''}`} 
 										onClick={this.clickPvince} 
 										key={`Province_${item}`}>
-							{item}
+							{item} 
 						</button>
 					))}
 				</div>
@@ -76,10 +84,8 @@ class Home extends Component {
 						<h3 className={stl.clickTitle}>选择城市:</h3>
 						{this.state.cities.map((item)=>(
 							<Link to={`/result/${item.city_en}`} 
-										className={stl.cityPill} 
-										activeClassName={stl.activePill}
-										onClick={this.clickCity} 
-										key={`Upcity_${item.city_cn}`}>
+										className={`${stl.cityPill} ${(item.city_en === this.state.scity) ? stl.activePill:''}`} 
+										key={`City_${item.city_en}`}> 
 								{item.city_cn}
 							</Link>
 						))}
@@ -89,6 +95,6 @@ class Home extends Component {
 			</div>
 		)
 	}
-}
+})
 
-export default Home
+export default withRouter(Home)
